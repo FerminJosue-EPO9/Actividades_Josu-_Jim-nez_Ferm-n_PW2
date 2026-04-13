@@ -1,0 +1,179 @@
+<mat-toolbar class="topbar">
+  <div class="topbar__inner">
+    <span class="topbar__title">{{ tituloApp }}</span>
+  </div>
+</mat-toolbar>
+
+<div class="contenedor">
+
+  <mat-card class="bloque tarjeta-elevada">
+    <mat-card-header>
+      <mat-card-title>Esta aplicación es para gestionar sus actividades académicas</mat-card-title>
+      <mat-card-subtitle>
+        Ingrese una nueva actividad llenando el cuestionario a continuación, no se podrá agregar la tarea si todos los
+        campos no están llenos.
+      </mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div class="form-grid">
+
+        <mat-form-field appearance="outline">
+          <mat-label>Título de la tarea</mat-label> <!--Aquí se describe donde irá guardada la información recopilada de los INPUTS-->
+          <input matInput [(ngModel)]="nuevoTitulo" placeholder="Ejemplo: Resolver práctica de Angular">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Materia</mat-label>
+          <input matInput [(ngModel)]="nuevaMateria" placeholder="Ejemplo: Programación Web II">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Fecha de entrega</mat-label> <!--Se recpila la información y se bloquea el elemento con el fin de que solo pueda ser actualizado por el calendario-->
+          <input matInput [matDatepicker]="picker" [(ngModel)]="nuevaFecha" placeholder="Seleccione fecha"  readonly>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker> <!--identificador de calendario a abrir-->
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Prioridad</mat-label>
+          <mat-select [(ngModel)]="nuevaPrioridad">
+            <mat-option value="Alta">Alta</mat-option>
+            <mat-option value="Media">Media</mat-option>
+            <mat-option value="Baja">Baja</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+
+      </div>
+    </mat-card-content>
+
+    @if (mensajeError) { <!--detector de fallo al momento de rellenar los elementos, faltan valores para las entradas-->
+    <mat-card-subtitle class="mensaje-secreto">
+      {{ mensajeError }}
+    </mat-card-subtitle>
+    }
+
+    <mat-card-actions>
+      <button mat-flat-button class="btn-principal" (click)="agregarTarea()">
+        <mat-icon>add</mat-icon>
+        Agregar tarea
+      </button>
+    </mat-card-actions>
+  </mat-card>
+
+  <mat-card class="bloque tarjeta-elevada">
+    <mat-card-header>
+      <mat-card-title>Resumen</mat-card-title>
+      <mat-card-subtitle>
+        Indicadores automáticos calculados con computed()
+      </mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div class="chips-resumen">
+        <mat-chip-set>
+          <mat-chip class="chip-resumen">
+            Total: {{ totalTareas() }}
+          </mat-chip>
+
+          <mat-chip class="chip-resumen">
+            Pendientes: {{ totalPendientes() }}
+          </mat-chip>
+
+          <mat-chip class="chip-resumen">
+            Completadas: {{ totalCompletadas() }}
+          </mat-chip>
+        </mat-chip-set>
+      </div>
+
+      <div class="filtros">
+
+        <button mat-stroked-button class="btn-filtro" (click)="cambiarFiltro('todas')">
+          Todas
+        </button>
+
+        <button mat-stroked-button class="btn-filtro" (click)="cambiarFiltro('pendientes')">
+          Pendientes
+        </button>
+
+        <button mat-stroked-button class="btn-filtro" (click)="cambiarFiltro('completadas')">
+          Completadas
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="bloque tarjeta-elevada">
+    <mat-card-header>
+      <mat-card-title>Lista de tareas</mat-card-title>
+      <mat-card-subtitle>
+        Renderizado dinámico con la sintaxis moderna de Angular
+      </mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+
+      @if (tareasFiltradas().length === 0) { <!--Se identifica si hay o no tareas para mostrar-->
+
+      <p class="sin-datos">
+        No hay tareas para mostrar con el filtro seleccionado.
+      </p>
+
+      } @else {
+
+      <mat-list>
+
+        @for (t of tareasFiltradas(); track t.id) {
+
+        <mat-list-item class="item-tarea">
+
+          <div class="fila-tarea">
+
+            <div class="lado-izquierdo">
+
+              <mat-checkbox [checked]="t.completada" (change)="toggleTarea(t.id)"> 
+                <!--Aquí hace referencia a que el estado del checkbox ejecutará la acción o 
+                función de toogletarea con el ID respectivo de la misma-->
+              </mat-checkbox>
+
+              <div class="contenido-tarea">
+                <p class="titulo-tarea">
+                  {{ t.titulo }}
+                </p>
+
+                <p class="materia-tarea">
+                  Materia: {{ t.materia }}
+                </p>
+
+                <p class="fecha-tarea">
+                  Entrega: {{ t.fecha }}
+                </p>
+
+                <mat-chip-set>
+                  <mat-chip [class]="obtenerClasePrioridad(t.prioridad)">
+                    <!--se seleccionará la clase necesaria según la prioridad de la tarea-->
+                    Prioridad: {{ t.prioridad }}
+                  </mat-chip>
+                </mat-chip-set>
+              </div>
+
+            </div>
+
+            <div class="lado-derecho">
+
+              <button mat-button class="btn-eliminar" (click)="eliminarTarea(t.id)">
+                <mat-icon>delete</mat-icon>
+                Eliminar
+              </button>
+            </div>
+          </div>
+        </mat-list-item>
+
+        <mat-divider></mat-divider>
+        }
+      </mat-list>
+      }
+    </mat-card-content>
+  </mat-card>
+</div>

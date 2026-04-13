@@ -1,0 +1,200 @@
+.mensaje-secreto {
+  background-color: #fdecea !important;
+  /* Color de fondo rojo pastel suave */
+  color: #d32f2f !important;
+  /* Texto en color rojo oscuro */
+  margin: 8px 0 !important;
+  /* Margen de 8px arriba y abajo */
+  padding: 12px 16px !important;
+  /* Espaciado interno del mensaje */
+  border-radius: 8px;
+  /* Curvatura de las esquinas */
+  border: 0px solid #ffcdd2;
+  /* Borde eliminado para estilo puntiagudo */
+}
+
+.item-tarea {
+  height: auto !important;
+  /* Altura dinámica según contenido */
+  min-height: 80px;
+  /* Altura mínima asegurada */
+  padding: 1rem 0;
+  /* Espaciado vertical de un rem */
+  height: auto !important;
+  /* Sobreescritura de altura automática */
+  min-height: 70px;
+  /* Ajuste de altura mínima a 70px */
+  padding: 0.5rem 0;
+  /* Ajuste de relleno vertical */
+}
+
+.contenido-tarea p {
+  margin: 4px 0;
+  /* Margen vertical para los párrafos */
+}
+
+.titulo-tarea {
+  font-size: 1.1rem;
+  /* Tamaño de fuente del título */
+  font-weight: bold;
+  /* Texto en negrita */
+  min-width: 200px;
+  /* Ancho mínimo para alinear columnas */
+}
+
+.materia-tarea,
+.fecha-tarea {
+  color: #555;
+  /* Color de texto gris oscuro */
+  font-size: 0.9rem;
+  /* Tamaño de fuente reducido */
+  color: #555;
+  /* Color gris para subtextos */
+  font-size: 0.95rem;
+  /* Ajuste ligero de tamaño de fuente */
+}
+
+mat-chip-set {
+  margin-top: 0px;
+  /* Elimina margen superior del conjunto */
+}
+
+.fila-tarea {
+  display: flex;
+  /* Contenedor flexible */
+  justify-content: space-between;
+  /* Distribuye elementos a los extremos */
+  align-items: center;
+  /* Centrado vertical de elementos */
+  width: 100%;
+  /* Ocupa todo el ancho disponible */
+}
+
+.lado-izquierdo {
+  display: flex;
+  /* Contenedor flexible */
+  align-items: center;
+  /* Centra checkbox con los textos */
+  gap: 1.5rem;
+  /* Separación entre checkbox y contenido */
+  flex: 1;
+  /* Expande el área para empujar la derecha */
+}
+
+.contenido-tarea {
+  display: flex;
+  /* Contenedor flexible */
+  flex-direction: row;
+  /* Distribución horizontal de datos */
+  align-items: center;
+  /* Alineación vertical central */
+  flex-wrap: wrap;
+  /* Salto de línea automático */
+  gap: 2rem;
+  /* Espacio entre columnas de datos */
+  width: 100%;
+  /* Ancho total del contenedor */
+
+  p {
+    margin: 0;
+    /* Elimina márgenes de los párrafos */
+  }
+}
+
+div {
+  margin: auto;
+  /* Centrado automático de bloques div */
+}
+
+.contenedor {
+  display: flex;
+  /* Contenedor flexible */
+  flex-direction: column;
+  /* Alineación vertical de tarjetas */
+  gap: 24px;
+  /* Separación entre cada tarjeta */
+  max-width: 1000px;
+  /* Límite de ancho de la aplicación */
+  margin: 40px auto;
+  /* Separación superior y centrado */
+  padding: 0 20px;
+  /* Margen de seguridad lateral */
+}
+
+.form-grid {
+  display: grid;
+  /* Sistema de red */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  /* Columnas responsivas */
+  gap: 16px;
+  /* Espacio entre campos del formulario */
+  margin-top: 20px;
+  /* Separación superior del grid */
+}
+
+.bloque {
+  width: 100%;
+  /* Ajuste al ancho total del padre */
+}
+
+.chips-resumen {
+  margin-bottom: 5px;
+  /* Margen inferior pequeño */
+  margin-top: 5px;
+  /* Margen superior pequeño */
+  display: block;
+  /* Ocupa todo el bloque de línea */
+}
+
+button {
+  margin-left: 2px;
+  /* Separación izquierda de botones */
+  margin-right: 2px;
+  /* Separación derecha de botones */
+}
+
+mat-card-subtitle {
+  margin-top: 15px;
+  /* Espacio superior para el subtítulo */
+}
+
+.mat-mdc-standard-chip {
+  font-weight: 500 !important;
+  /* Grosor de fuente medio */
+}
+
+.chip-alta {
+  background-color: #fdecea !important;
+  /* Fondo rojo pastel */
+  color: #d32f2f !important;
+  /* Texto rojo oscuro */
+  border: 1px solid #ffcdd2 !important;
+  /* Borde sutil rosado */
+}
+
+.chip-media {
+  background-color: #fff8e1 !important;
+  /* Fondo amarillo pastel */
+  color: #f57f17 !important;
+  /* Texto naranja oscuro */
+  border: 1px solid #ffecb3 !important;
+  /* Borde sutil amarillento */
+}
+
+.chip-baja {
+  background-color: #e8f5e9 !important;
+  /* Fondo verde pastel */
+  color: #2e7d32 !important;
+  /* Texto verde oscuro */
+  border: 1px solid #c8e6c9 !important;
+  /* Borde sutil verdoso */
+}
+
+mat-toolbar {
+  background-color: #B8D9FF;
+  /* Fondo azul claro */
+  font-weight: bold;
+  /* Texto de barra en negrita */
+  font-family: 'Oswald', sans-serif;
+  /* Tipografía moderna de Oswald */
+}
