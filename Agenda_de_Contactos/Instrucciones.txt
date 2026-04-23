@@ -1,0 +1,101 @@
+
+===========================================
+BACKEND - AGENDA DE CONTACTOS (FastAPI)
+===========================================
+
+Este proyecto corresponde al backend de una aplicación de agenda de contactos
+utilizando FastAPI.
+
+-------------------------------------------
+1. REQUISITOS
+-------------------------------------------
+
+- Python instalado (3.10 o superior recomendado)
+- pip (gestor de paquetes de Python)
+
+-------------------------------------------
+2. CREAR Y ACTIVAR ENTORNO VIRTUAL
+-------------------------------------------
+
+Ubicarse en la carpeta del backend:
+
+> cd backend
+
+Crear entorno virtual:
+
+> python -m venv venv
+
+Activar entorno virtual en PowerShell:
+
+> .\venv\Scripts\Activate
+
+Si todo está correcto, verás (venv) al inicio de la terminal.
+
+-------------------------------------------
+3. INSTALAR DEPENDENCIAS
+-------------------------------------------
+
+Instalar FastAPI y servidor:
+
+> pip install fastapi uvicorn pydantic[email]
+
+Guardar dependencias en archivo:
+
+> pip freeze > requirements.txt
+
+-------------------------------------------
+4. EJECUTAR EL SERVIDOR
+-------------------------------------------
+
+Desde la carpeta backend, con el entorno activado:
+
+> uvicorn app.main:app --reload
+
+-------------------------------------------
+5. URLS IMPORTANTES
+-------------------------------------------
+
+Servidor (API funcionando):
+http://127.0.0.1:8000
+
+Documentación Swagger (interactiva):
+http://127.0.0.1:8000/docs
+
+Documentación alternativa (ReDoc):
+http://127.0.0.1:8000/redoc
+
+-------------------------------------------
+6. ESTRUCTURA DEL PROYECTO
+-------------------------------------------
+
+backend/
+└── app/
+    ├── controllers/   -> Lógica del sistema
+    ├── data/          -> Datos en memoria
+    ├── models/        -> Modelos (Pydantic)
+    ├── routes/        -> Rutas de la API
+    └── main.py        -> Punto de entrada
+
+-------------------------------------------
+7. ENDPOINTS DISPONIBLES
+-------------------------------------------
+
+GET    /contactos/                -> Obtener todos
+GET    /contactos/{id}            -> Obtener por ID
+GET    /contactos/buscar?texto=   -> Buscar contactos
+POST   /contactos/                -> Crear contacto
+PUT    /contactos/{id}            -> Actualizar contacto
+DELETE /contactos/{id}            -> Eliminar contacto
+
+-------------------------------------------
+8. NOTAS IMPORTANTES
+-------------------------------------------
+
+- Los datos se almacenan en memoria (no base de datos).
+- Al reiniciar el servidor, los datos se reinician.
+- FastAPI valida automáticamente los datos de entrada.
+- Swagger permite probar la API sin herramientas externas.
+
+-------------------------------------------
+FIN
+-------------------------------------------

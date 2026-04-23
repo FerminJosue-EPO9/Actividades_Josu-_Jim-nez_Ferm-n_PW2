@@ -1,0 +1,221 @@
+@use '@angular/material' as mat;
+
+/* ==========================================================
+   TEMA GLOBAL DE ANGULAR MATERIAL
+   ========================================================== */
+
+html {
+  @include mat.theme((
+    color: (
+      theme-type: light,
+      primary: mat.$azure-palette,
+      tertiary: mat.$blue-palette
+    ),
+    typography: Roboto,
+    density: 0
+  ));
+}
+
+/* ==========================================================
+   BASE GLOBAL
+   ========================================================== */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(59, 130, 246, 0.08), transparent 32%),
+    radial-gradient(circle at top right, rgba(14, 165, 233, 0.08), transparent 28%),
+    linear-gradient(180deg, #f8fbff 0%, #eef4fb 100%);
+  color: #172033;
+}
+
+body {
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* ==========================================================
+   TOPBAR
+   ========================================================== */
+
+.app-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  height: 74px;
+  padding: 0 24px;
+  background: rgba(255, 255, 255, 0.82) !important;
+  color: #0f172a !important;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.16);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+}
+
+.toolbar-inner {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand-icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  background: rgba(37, 99, 235, 0.10);
+  color: #2563eb;
+}
+
+.brand-text {
+  display: grid;
+  gap: 2px;
+}
+
+.brand-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.brand-subtitle {
+  font-size: 0.85rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* ==========================================================
+   LAYOUT GENERAL
+   ========================================================== */
+
+.page-shell {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 28px 24px 42px;
+}
+
+.hero-panel {
+  margin-bottom: 24px;
+  padding: 28px 30px;
+  border-radius: 28px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.96), rgba(255,255,255,0.92));
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  box-shadow:
+    0 10px 30px rgba(15, 23, 42, 0.06),
+    0 1px 0 rgba(255,255,255,0.8) inset;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #2563eb;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.hero-panel h1 {
+  margin: 0 0 8px;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: #0f172a;
+}
+
+.hero-description {
+  margin: 0;
+  max-width: 780px;
+  color: #475569;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: 380px minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+/* ==========================================================
+   TARJETAS Y ELEMENTOS GENERALES
+   ========================================================== */
+
+.soft-card {
+  border-radius: 24px !important;
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  background: rgba(255, 255, 255, 0.92) !important;
+  box-shadow:
+    0 10px 24px rgba(15, 23, 42, 0.05),
+    0 1px 0 rgba(255,255,255,0.75) inset !important;
+}
+
+.mat-mdc-card-content:last-child {
+  padding-bottom: 20px;
+}
+
+.mat-mdc-card-content {
+  padding-top: 6px !important;
+}
+
+.mat-mdc-form-field {
+  width: 100%;
+}
+
+.mat-mdc-text-field-wrapper {
+  border-radius: 18px !important;
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.mdc-text-field--outlined {
+  --mdc-outlined-text-field-outline-color: rgba(148, 163, 184, 0.42);
+  --mdc-outlined-text-field-hover-outline-color: rgba(59, 130, 246, 0.62);
+  --mdc-outlined-text-field-focus-outline-color: #2563eb;
+}
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+
+@media (max-width: 960px) {
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .app-toolbar {
+    height: auto;
+    min-height: 70px;
+    padding: 12px 16px;
+  }
+
+  .page-shell {
+    padding: 20px 16px 32px;
+  }
+
+  .hero-panel {
+    padding: 22px 18px;
+    border-radius: 22px;
+  }
+
+  .brand-title {
+    font-size: 1.08rem;
+  }
+
+  .brand-subtitle {
+    font-size: 0.8rem;
+  }
+}
